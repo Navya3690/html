@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invigilation Duties</title>
+    <style>
+        body {
+            background-image: url('lock.jpg'); /* Replace 'your-background-image.jpg' with the actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <h1><b><u>Invigilation Duties</b></u></h1>
+
+    <!-- Select Faculty -->
+    <label for="facultySelect">Select Faculty:</label>
+    <select id="facultySelect" onchange="updateAssignedDuties()">
+        <option value="John Doe">John Doe</option>
+        <option value="Sivani">Sivani</option>
+        <option value="Sunila">Sunila</option>
+        <option value="Rajesh">Rajesh</option>
+        <option value="Jaswanth">Jaswanth</option>
+        <option value="Pramila">Pramila</option>
+        <option value="Rambabu">Rambabu</option>
+        <!-- Add more faculty members here -->
+    </select>
+
+    <!-- Display assigned duties -->
+    <h2>Your Assigned Duties</h2>
+    <ul id="assignedDuties">
+        <!-- JavaScript will populate this list -->
+    </ul>
+
+    <!-- Request adjustments -->
+    <h2>Request Adjustment</h2>
+    <form id="adjustmentForm">
+        <label for="adjustmentDate">Date:</label>
+        <input type="date" id="adjustmentDate" name="adjustmentDate" required><br>
+
+        <label for="adjustmentTime">Time:</label>
+        <input type="time" id="adjustmentTime" name="adjustmentTime" required><br>
+
+        <label for="adjustmentReason">Reason:</label>
+        <textarea id="adjustmentReason" name="adjustmentReason" rows="4" cols="50" required></textarea><br>
+
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <!-- View status of adjustment requests -->
+    <h2>Adjustment Request Status</h2>
+    <ul id="adjustmentStatus">
+        <!-- JavaScript will populate this list -->
+    </ul>
+
+    <!-- Report absentees -->
+    <h2>Report Absentees</h2>
+    <form id="absenteeReportForm">
+        <label for="absenteeDate">Date:</label>
+        <input type="date" id="absenteeDate" name="absenteeDate" required><br>
+
+        <label for="absenteeRoom">Room:</label>
+        <input type="text" id="absenteeRoom" name="absenteeRoom" required><br>
+
+        <label for="absenteeDetails">Details:</label>
+        <textarea id="absenteeDetails" name="absenteeDetails" rows="4" cols="50" required></textarea><br>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <!-- JavaScript code for handling actions and data population -->
+    <script>
+        // Sample data for assigned duties
+        var assignedDutiesData = {
+            "John Doe": [
+                { date: '10-10-2023', time: '9:00 AM - 11:00 AM', room: '101' },
+            ],
+            "Sivani": [
+                { date: '11-10-2023', time: '9:00 AM - 11:00 AM', room: '102' },
+            ],
+            "Sunila": [
+                { date: '12-10-2023', time: '9:00 AM - 11:00 AM', room: '123' },
+            ],
+            "Rajesh": [
+                { date: '13-10-2023', time: '9:00 AM - 11:00 AM', room: '129' },
+            ],
+            "Jaswanth": [
+                { date: '14-10-2023', time: '9:00 AM - 11:00 AM', room: '221' },
+            ],
+            "Pramila": [
+                { date: '15-10-2023', time: '9:00 AM - 11:00 AM', room: '332' },
+            ],
+            "Rambabu": [
+                { date: '16-10-2023', time: '9:00 AM - 11:00 AM', room: '109' },
+            ],
+            // Add duties data for more faculty members here
+        };
+
+        // Initialize an empty array for adjustment status data
+        var adjustmentStatusData = [];
+
+        // Initialize an empty array for absentee reports
+        var absenteeReports = [];
+
+        // Function to update assigned duties for the selected faculty
+        function updateAssignedDuties() {
+            var selectedFaculty = document.getElementById('facultySelect').value;
+            var assignedDutiesList = document.getElementById('assignedDuties');
+            assignedDutiesList.innerHTML = ''; // Clear previous duties
+
+            assignedDutiesData[selectedFaculty].forEach(function (duty) {
+                var listItem = document.createElement('li');
+                listItem.textContent = `Date: ${duty.date}, Time: ${duty.time}, Room: ${duty.room}`;
+                assignedDutiesList.appendChild(listItem);
+            });
+        }
+
+        // Handle adjustment request submission
+        document.getElementById('adjustmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var adjustmentDate = document.getElementById('adjustmentDate').value;
+            var adjustmentTime = document.getElementById('adjustmentTime').value;
+            var adjustmentReason = document.getElementById('adjustmentReason').value;
+
+            // Create a new adjustment request object
+            var newRequest = {
+                date: adjustmentDate,
+                time: adjustmentTime,
+                reason: adjustmentReason,
+                status: 'Pending' // Set the initial status to 'Pending'
+            };
+
+            // Add the new request to the adjustmentStatusData
+            adjustmentStatusData.push(newRequest);
+
+            // Update the Adjustment Request Status list
+            var adjustmentStatusList = document.getElementById('adjustmentStatus');
+            var listItem = document.createElement('li');
+            listItem.textContent = `Date: ${newRequest.date}, Time: ${newRequest.time}, Reason: ${newRequest.reason}, Status: ${newRequest.status}`;
+            adjustmentStatusList.appendChild(listItem);
+
+            // Display a confirmation message to the user
+            alert('Adjustment request submitted successfully.');
+        });
+
+        // Handle absentee report submission
+        document.getElementById('absenteeReportForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var absenteeDate = document.getElementById('absenteeDate').value;
+            var absenteeRoom = document.getElementById('absenteeRoom').value;
+            var absenteeDetails = document.getElementById('absenteeDetails').value;
+
+            // Create a new absentee report object
+            var newReport = {
+                date: absenteeDate,
+                room: absenteeRoom,
+                details: absenteeDetails
+            };
+
+            // Add the new report to the absenteeReports array
+            absenteeReports.push(newReport);
+
+            // Display a confirmation message to the user
+            alert('Absentee report submitted successfully.');
+        });
+    </script>
+</body>
+</html>
