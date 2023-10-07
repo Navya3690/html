@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Logins</title>
+    <style>
+      .login-cart-frame {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+  
+      .login-cart {
+        width: 300px;
+        margin: 0 10px 10px 0;
+        padding: 20px;
+        background-color: #fff;
+      }
+  
+      .login-cart h2 {
+        text-align: center;
+      }
+  
+      .login-cart form {
+        margin-top: 20px;
+      }
+  
+      .login-cart input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #211f1f;
+      }
+  
+      .login-cart button {
+        width: 100%;
+        background-color: #000;
+        color: #a5f083;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        cursor: pointer;
+      }
+  
+      .login-cart button:hover {
+        background-color: #a5f083;
+      }
+  
+      .login-cart a {
+        color: #e02413;
+        text-decoration: none;
+      }
+  
+      .login-cart a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    
+    
+</head>
+<body background= "bg2.png">
+  <div style="display: flex; justify-content: center;">
+    <div class="login-cart-frame">
+      <div class="login-cart">
+        <h2>Admin Login</h2>
+        <form action="/admin/login" method="post">
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <p>Click the link below to go to the email verification page:</p>
+          <a href="password.html" target="Forget Password">Forget Password</a>
+          <button type="submit">Login</button>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+    </div>
+    <div class="login-cart-frame">
+      <div class="login-cart">
+        <h2>Faculty Login</h2>
+        <form action="Faculty db.html" method="post"></form>
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <p>Click the link below to go to the email verification page:</p>
+          <a href="password.html" target="Forget Password">Forget Password</a>
+          <button type="submit">Login</button>
+          <button type="reset">Reset</button>
+          
+        </form>
+      </div>
+    </div>
+    <div class="login-cart-frame">
+      <div class="login-cart">
+        <h2>Department Incharge Login</h2>
+        <form action="/department-incharge/login" method="post">
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <p>Click the link below to go to the email verification page:</p>
+          <a href="password.html" target="Forget Password">Forget Password</a>
+          <button type="submit">Login</button>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forget password</title>
+  <style>
+    body {
+      background-image: url("dept.jpg");
+      background-size: cover;
+    }
+    .forgot-password-form {
+      text-align: center;
+      margin: 0 auto;
+      width: 300px;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="forgot-password-form">
+    <h1>Email verification</h1>
+    
+    <form action="/reset-password" method="post" onsubmit="return sendEmail()">
+      <input type="email" name="email" placeholder="Email Address">
+      <button type="submit">Send</button>
+      
+    </form>
+  </div>
+
+  <div class="popup" id="myPopup" style="display: none;">
+    <h1>Mail Sent Successfully</h1>
+    <p>A link to reset your password has been sent to your email address.</p>
+    <a href="otp.html" target="OTP Verification">Enter</a>
+  </div>
+
+  <script>
+    function sendEmail() {
+      // Send the email to the user with the link to reset their password.
+      // Once the email is sent, display the popup.
+      document.getElementById("myPopup").style.display = "block";
+      return false;
+    }
+  </script>
+</body>
+</html>

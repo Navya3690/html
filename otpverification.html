@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Verification</title>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+    .otp-field {
+      text-align: center;
+      margin: 0 auto;
+      width: 300px;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+    }
+    .otp-input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      border: 1px solid black;
+    }
+    .submit-button {
+      width: 100px;
+      height: 50px;
+      margin-top: 20px;
+      background-color: green;
+      color: white;
+    }
+    .cursor {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="otp-field">
+    <h1>OTP Verification</h1>
+    <p>Please enter the 4-digit OTP that was sent to your email address:</p>
+    <input type="text" class="otp-input" id="otp1" autofocus>
+    <input type="text" class="otp-input" id="otp2">
+    <input type="text" class="otp-input" id="otp3">
+    <input type="text" class="otp-input" id="otp4">
+    <button type="submit" class="submit-button" onclick="verifyOtp()">Submit</button>
+    
+  </div>
+  
+
+  <div class="popup" id="myPopup" style="display: none;">
+    <h1>OTP Verified</h1>
+    <p> successfully verified your OTP.</p>
+    <a href="confo.html" target="Create New Password">Create</a>
+  </div>
+
+  <script>
+    function verifyOtp() {
+      // Get the OTP from the input fields.
+      var otp1 = document.getElementById("otp1").value;
+      var otp2 = document.getElementById("otp2").value;
+      var otp3 = document.getElementById("otp3").value;
+      var otp4 = document.getElementById("otp4").value;
+      var otp = otp1 + otp2 + otp3 + otp4;
+
+      // Verify the OTP.
+      // This can be done by sending a request to your server.
+      // Once the OTP is verified, display the popup.
+      document.getElementById("myPopup").style.display = "block";
+    }
+
+    // Move the cursor to the next input field after the digit is pressed.
+    document.getElementById("otp1").addEventListener("input", function() {
+      if (this.value.length === 1) {
+        document.getElementById("otp2").focus();
+      }
+    });
+    document.getElementById("otp2").addEventListener("input", function() {
+      if (this.value.length === 1) {
+        document.getElementById("otp3").focus();
+      }
+    });
+    document.getElementById("otp3").addEventListener("input", function() {
+      if (this.value.length === 1) {
+        document.getElementById("otp4").focus();
+      }
+    });
+  </script>
+</body>
+</html>`
