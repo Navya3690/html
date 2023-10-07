@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1><u><b>Admin</u></b></h1>
+    <style>
+        /* CSS for setting the background image */
+        body {
+            background-image: url('web.jpg'); /* Replace with the URL of your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Manage Faculty Information -->
+    <h2>Manage Faculty Information</h2>
+    <form id="facultyForm">
+        <label for="facultyName">Faculty Name:</label>
+        <input type="text" id="facultyName" name="facultyName" required>
+        
+        <label for="facultyDepartment">Department:</label>
+        <input type="text" id="facultyDepartment" name="facultyDepartment" required>
+        
+        <label for="facultyCourses">Courses:</label>
+        <input type="text" id="facultyCourses" name="facultyCourses" required>
+        
+        <button type="submit">Add Faculty</button>
+    </form>
+    <ul id="facultyList">
+        <!-- JavaScript will populate this list -->
+    </ul>
+
+    <!-- Buttons for "Department" and "Faculty" -->
+    <button type="button" onclick="manageDepartment()">Department</button>
+    <button type="button" onclick="manageFaculty()">Faculty</button>
+
+    <!-- JavaScript code for handling actions and data population -->
+    <script>
+        // ... (existing JavaScript code for faculty management) ...
+
+        // Function to display the department incharge
+        function showDepartmentIncharge(departmentName) {
+            // You can replace the following alert with any desired action to display the incharge.
+            alert("Incharge of " + departmentName + " is John Doe");
+        }
+
+        // Functions to manage Department and Faculty
+        function manageDepartment() {
+            // Add your code to manage departments here
+            alert("Managing Departments");
+        }
+
+        function manageFaculty() {
+            // Add your code to manage faculty here
+            alert("Managing Faculty");
+        }
+    </script>
+</body>
+</html>

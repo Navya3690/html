@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Department Incharge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('design.jpg'); /* Replace 'your-image-url.jpg' with the URL or file path of your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+	 }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        select, input {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <script>
+        function showExamDetails() {
+            var branch = document.getElementById("branch").value;
+            var subjectDetails = document.getElementById("subjectDetails");
+
+            // Clear previous content
+            subjectDetails.innerHTML = "";
+
+            // Define subject and exam details based on the selected branch
+            var data = {};
+
+            if (branch === "cse") {
+                data = {
+                    "Python": "Exam Date: 10/15/2023, Exam Time: 10:00 AM",
+                    "Java": "Exam Date: 10/16/2023, Exam Time: 11:30 AM",
+                    "Flat": "Exam Date: 10/17/2023, Exam Time: 2:00 PM",
+                    "Data Structures": "Exam Date: 10/18/2023, Exam Time: 9:00 AM",
+                    "AI": "Exam Date: 10/19/2023, Exam Time: 2:00 PM"
+                };
+            } else if (branch === "iot") {
+                data = {
+                    "MPMC": "Exam Date: 10/15/2023, Exam Time: 9:00 AM",
+                    "SAP": "Exam Date: 10/16/2023, Exam Time: 1:30 PM",
+                    "java": "Exam Date: 10/17/2023, Exam Time: 3:45 PM",
+                    "DCD": "Exam Date: 10/18/2023, Exam Time: 9:00 AM",
+                    "ADC": "Exam Date: 10/19/2023, Exam Time: 3:45 PM"
+                };
+            } else if (branch === "me") {
+                data = {
+                    "Fluid mechanics": "Exam Date: 10/15/2023, Exam Time: 10:30 AM",
+                    "Thermodynamics": "Exam Date: 10/16/2023, Exam Time: 12:15 PM",
+                    "engineering Drawing": "Exam Date: 10/17/2023, Exam Time: 4:30 PM",
+                    "designing": "Exam Date: 10/18/2023, Exam Time: 10:00 AM",
+                    "material Science": "Exam Date: 10/19/2023, Exam Time: 4:30 PM"
+                };
+            } else if (branch === "ece") {
+                data = {
+                    "embbeded System": "Exam Date: 10/15/2023, Exam Time: 10:30 AM",
+                    "communication System": "Exam Date: 10/16/2023, Exam Time: 12:15 PM",
+                    "digital signal proccessing": "Exam Date: 10/17/2023, Exam Time: 4:30 PM",
+                    "python": "Exam Date: 10/18/2023, Exam Time: 10:00 AM",
+                    "Analog electronics": "Exam Date: 10/19/2023, Exam Time: 4:30 PM"
+                };
+            } else if (branch === "aids") {
+                data = {
+                    "DBMS": "Exam Date: 10/15/2023, Exam Time: 10:30 AM",
+                    "deep learing": "Exam Date: 10/16/2023, Exam Time: 12:15 PM",
+                    "automata": "Exam Date: 10/17/2023, Exam Time: 4:30 PM",
+                    "machine learning": "Exam Date: 10/18/2023, Exam Time: 10:00 AM",
+                    "java": "Exam Date: 10/19/2023, Exam Time: 4:30 PM"
+                };
+            }
+
+            // Create and append list items for each subject and exam details
+            for (var subject in data) {
+                var listItem = document.createElement("li");
+                listItem.textContent = subject + " - " + data[subject];
+                subjectDetails.appendChild(listItem);
+            }
+        }
+
+        // JavaScript code for controlling access to department schedule and faculty data
+        document.getElementById('departmentScheduleForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('You cannot edit other department\'s schedules.');
+        });
+
+        document.getElementById('facultyDataForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('You cannot edit other department\'s faculty data.');
+        });
+    </script>
+</head>
+<body>
+    <h1>Department Incharge</h1>
+
+    <div class="container">
+        <!-- Exam Details Column -->
+        <div class="column">
+            <h2>Exam Details</h2>
+            <label for="branch">Select Branch:</label>
+            <select id="branch" onchange="showExamDetails()">
+                <option value="select a branch">Select a branch</option>
+                <option value="cse">CSE</option>
+                <option value="iot">IoT</option>
+                <option value="me">ME</option>
+                <option value="ece">ECE</option>
+                <option value="aids">AIDS</option>
+            </select>
+            <br><br>
+            <h3>Subjects and Exam Details:</h3>
+            <ul id="subjectDetails"></ul>
+        </div>
+
+        <!-- Department Schedule Column -->
+        <div class="column">
+            <h2>Your Department's Schedule</h2>
+            <form id="departmentScheduleForm">
+                <!-- Input fields for your department's schedule -->
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required><br>
+
+                <label for="time">Time:</label>
+                <input type="text" id="time" name="time" required><br>
+
+                <!-- Submit button to add/edit your department's schedule -->
+                <button type="submit">Add/Edit Schedule</button>
+            </form>
+        </div>
+
+        <!-- Faculty Data Column -->
+        <div class="column" >
+            <h2>Faculty Data</h2>
+            <form id="facultyDataForm">
+                <!-- Input fields for faculty data -->
+                <label for="facultyName">Faculty Name:</label>
+                <input type="text" id="facultyName" name="facultyName" required><br>
+
+                <label for="facultyDepartment">Department:</label>
+                <input type="text" id="facultyDepartment" name="facultyDepartment" required><br>
+
+                <!-- Submit button to add/edit faculty data -->
+                <button type="submit">Add/Edit Faculty Data</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Replace with your logic for controlling access
+        document.getElementById('departmentScheduleForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('You cannot edit other department\'s schedules.');
+        });
+
+        document.getElementById('facultyDataForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('You cannot edit other department\'s faculty data.');
+        });
+    </script>
+</body>
+</html>
